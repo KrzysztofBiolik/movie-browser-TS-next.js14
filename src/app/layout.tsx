@@ -1,3 +1,4 @@
+import { Navigation } from "@/common/Navigation/page";
 import type { Metadata } from "next";
 import Providers from "../../utils/provider";
 import StyledComponentsRegistry from "./registry";
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <StyledComponentsRegistry>
+            <Navigation />
             {children}
           </StyledComponentsRegistry>
         </Providers>
