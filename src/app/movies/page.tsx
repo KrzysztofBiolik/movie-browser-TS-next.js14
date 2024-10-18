@@ -8,6 +8,9 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { MoviesResponse } from "@/common/types";
 import { Pagination } from "@/common/Pagination/page";
+import { TileList } from "@/common/TileList/page";
+import { Container } from "@/common/Container/page";
+import { Movies } from "@/common/Movies/page";
 
 export default function MovieList() {
 
@@ -20,7 +23,6 @@ export default function MovieList() {
 
     useEffect(() => {
         if (!searchParams.has("page")) {
-
             router.replace(`?page=1`)
         }
     }, [searchParams]);
@@ -36,23 +38,14 @@ export default function MovieList() {
         }),
     });
 
-    if (isPending) {
-        return <p>Ładowanie</p>
-    }
-
-    console.log(typeof(rawData?.total_pages));
+    if (isPending) { return <p>Ładowanie</p> }
 
     return (
-        <div>
+
+        <Container>
             <Header>Movies Page</Header>
-            <ul>
-                {rawData?.results?.map((movie) => (
-                    <li>
-                        {movie.title}
-                    </li>
-                ))}
-            </ul>
+           <Movies movies={rawData?.results}/>
             <Pagination totalPages={rawData?.total_pages} />
-        </div>
+        </Container>
     )
 }
