@@ -1,5 +1,5 @@
 export const theme = {
-    color: {
+    colors: {
         white: "#FFFFFF",
         whisper: "#F5F5FA",
         mystic: "#E4E6F0",
@@ -15,11 +15,10 @@ export const theme = {
     },
 
     breakpoints: {
-        desktopLarge: 1500,
-        desktopSmall: 1200,
-        tabletLarge: 1086,
-        tabletSmall: 992,
-        mobileLarge: 767,
-        mobileSmall: 480,
+        laptopMax: 1392,
+        tabletHorizontalMax: 1199,
+        tabletVerticalMax: 991,
+        mobileHorizontalMax: 767,
+        mobileVerticalMax: 575,
     },
 } as const;
