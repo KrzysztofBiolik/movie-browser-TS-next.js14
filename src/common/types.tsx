@@ -13,5 +13,5 @@ export interface MoviesResponse {
     page?: number;
     results?: MoviesListResult[];
     total_results?: number;
-    total_pages?: number;
+    total_pages?: number | undefined;
 }
