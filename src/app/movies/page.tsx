@@ -6,7 +6,8 @@ import { Header } from "./styled";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { MoviesResponse } from "@/common/Header/types";
+import { MoviesResponse } from "@/common/types";
+import { Pagination } from "@/common/Pagination/page";
 
 export default function MovieList() {
 
@@ -20,12 +21,12 @@ export default function MovieList() {
     useEffect(() => {
         if (!searchParams.has("page")) {
 
-            router.replace(`?page=5`)
+            router.replace(`?page=1`)
         }
     }, [searchParams]);
 
     const { isPending, isError, data: rawData } = useQuery({
-        queryKey: ["movieList"],
+        queryKey: ["movieList", page, query],
         queryFn: () => fetchFromAPI<MoviesResponse>({
             path,
             parameters: {
@@ -35,7 +36,11 @@ export default function MovieList() {
         }),
     });
 
-    console.log(rawData?.results);
+    if (isPending) {
+        return <p>Ładowanie</p>
+    }
+
+    console.log(typeof(rawData?.total_pages));
 
     return (
         <div>
@@ -45,9 +50,9 @@ export default function MovieList() {
                     <li>
                         {movie.title}
                     </li>
-                )) }
+                ))}
             </ul>
+            <Pagination totalPages={rawData?.total_pages} />
         </div>
-
     )
 }
