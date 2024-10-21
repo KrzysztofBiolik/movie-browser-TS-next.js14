@@ -1,21 +1,26 @@
-import { ContentWrapper, Image, Title, Wrapper } from "./styled";
+import { ContentWrapper, Image, SubTitle, Title, Wrapper } from "./styled";
 
 interface TileParametersProps {
     title?: string,
     image?: string | null,
-    small?: boolean,
+    subtitle?: string,
+    small: boolean,
 }
 
 export const Tile = ({
-    title,
     image,
+    title,
+    subtitle,
     small
 }: TileParametersProps
 ) => (
-    <Wrapper small={small || undefined}>
+    <Wrapper small={small}>
         <Image url={image} />
         <ContentWrapper>
             <Title>{title}</Title>
+            {!!subtitle && (
+                <SubTitle small={small}>{subtitle}</SubTitle>
+            )}
         </ContentWrapper>
     </Wrapper>
 ) 

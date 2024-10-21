@@ -45,3 +45,9 @@ export const Title = styled.header`
     font-size: 36px;
     margin-top: 6px;
 `;
+
+export const SubTitle = styled.p<{ small: boolean }>`
+    margin-top:24px;
+    font-size: 22px;
+    color: ${({ theme }) => theme.colors.waterloo};
+`;
