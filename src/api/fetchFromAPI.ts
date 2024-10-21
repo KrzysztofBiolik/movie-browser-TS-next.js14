@@ -6,7 +6,7 @@ const API_KEY = "3f7fc9c72e59bba6e2321914c19c0c85";
 
 type fetchApiParameters = {
     path: string;
-    parameters: {
+    parameters?: {
         page?: string;
         query?: string;
     }
