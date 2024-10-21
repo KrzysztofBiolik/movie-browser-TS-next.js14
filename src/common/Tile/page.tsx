@@ -1,12 +1,13 @@
+import { ReactNode } from "react";
 import { ContentWrapper, Image, SubTitle, Title, Wrapper } from "./styled";
 import { Tags } from "./Tags/page";
 
 interface TileParametersProps {
     title?: string,
     image?: string | null,
-    subtitle?: string,
-    small: boolean,
+    subtitle?: ReactNode,
     genreIds?: number[],
+    small: boolean,
 }
 
 export const Tile = ({
@@ -14,7 +15,8 @@ export const Tile = ({
     title,
     subtitle,
     genreIds,
-    small
+    small,
+    
 }: TileParametersProps
 ) => (
     <Wrapper small={small}>
@@ -24,6 +26,7 @@ export const Tile = ({
             {!!subtitle && (
                 <SubTitle small={small}>{subtitle}</SubTitle>
             )}
+            
             <Tags genreIds={genreIds} />
         </ContentWrapper>
     </Wrapper>

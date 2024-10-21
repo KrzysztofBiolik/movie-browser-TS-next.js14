@@ -1,0 +1,1 @@
+export const getYearFromDate = ( date?: string ) => date?.substring(0, 4);
