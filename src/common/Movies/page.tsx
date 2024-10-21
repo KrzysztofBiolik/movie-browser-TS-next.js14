@@ -6,7 +6,7 @@ import { MoviesListResult } from "../types"
 export const Movies = ({ movies }: { movies: MoviesListResult[] | undefined }) => {
 
     return (
-        <TileList lessItems>
+        <TileList lessitems>
             {movies?.map(movie => (
                 <TileListLink
                     key={movie.id}
@@ -14,11 +14,13 @@ export const Movies = ({ movies }: { movies: MoviesListResult[] | undefined }) =
                 >
                     <Tile
                         small
-                        title={movie.title}
                         image={getImageUrl({
                             path: movie.poster_path,
-                            size: "medium"
+                            size: "medium",
                         })}
+                        title={movie.title}
+                        genreIds={movie?.genre_ids || undefined}
+
                     />
                 </TileListLink>
             ))}
