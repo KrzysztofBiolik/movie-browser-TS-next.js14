@@ -3,6 +3,7 @@ import Providers from "../../utils/provider";
 import StyledComponentsRegistry from "./registry";
 import { Header } from "@/common/Header/page";
 import ThemeClient from "../../utils/ThemeProvider";
+import "./global.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",

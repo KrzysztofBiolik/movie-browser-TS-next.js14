@@ -1,0 +1,22 @@
+ html {
+     box-sizing: border-box;
+ }
+
+ *,
+ ::after,
+ ::before {
+     box-sizing: inherit;
+ }
+
+ :focus {
+     outline: none;
+ }
+
+ body {
+     margin: 0 auto;
+     height: 100vh;
+     background: #F5F5FA;
+     color: #18181B;
+ }
+
+ ;
