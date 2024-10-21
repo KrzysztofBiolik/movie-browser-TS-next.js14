@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled, { css } from "styled-components";
 
-export const TileList = styled.div<{ lessItems?: boolean }>`
+export const TileList = styled.div<{ lessitems: boolean }>`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
     grid-gap: 16px;
@@ -12,15 +12,17 @@ export const TileList = styled.div<{ lessItems?: boolean }>`
         margin-top:12px;
     }
 
-    ${({ lessItems }) => lessItems && css`
+    ${({ lessitems }) => lessitems && css`
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     `}
 `;
 
 export const TileListLink = styled(Link)`
     display: grid;
-align-items: stretch;
-transition: 0.3s;
+    text-decoration: none;
+    align-items: stretch;
+    transition: 0.3s;
+    color: ${({ theme }) => theme.colors.woodsmoke};
 
 
 &:hover{

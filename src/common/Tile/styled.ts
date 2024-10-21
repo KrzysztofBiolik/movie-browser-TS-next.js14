@@ -33,17 +33,23 @@ export const ContentWrapper = styled.div`
 `;
 
 export const Image = styled.div<{ url?: string | null }>`
-    padding-top: calc(100%*632/421);
+    padding-top: calc(100% * 632 / 421);
     background: url(${({ url }) => url});
     background-size: cover;
     background-position: center;
     border-radius: 5px;
     `;
 
-export const Title = styled.header`
+export const Title = styled.header<{ small: boolean }>`
     font-weight: 600;
     font-size: 36px;
     margin-top: 6px;
+
+    ${({ small }) => small && css`
+        font-weight: 500;
+        font-size:20px;
+        margin-top:unset;
+    `}
 `;
 
 export const SubTitle = styled.p<{ small: boolean }>`
