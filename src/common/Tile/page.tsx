@@ -1,12 +1,17 @@
 import { ReactNode } from "react";
 import { ContentWrapper, Image, SubTitle, Title, Wrapper } from "./styled";
 import { Tags } from "./Tags/page";
+import { Vote } from "../Vote/page";
 
 interface TileParametersProps {
     title?: string,
     image?: string | null,
     subtitle?: ReactNode,
     genreIds?: number[],
+    vote?: {
+        average?: number,
+        count?: number,
+    }
     small: boolean,
 }
 
@@ -16,7 +21,7 @@ export const Tile = ({
     subtitle,
     genreIds,
     small,
-    
+    vote,
 }: TileParametersProps
 ) => (
     <Wrapper small={small}>
@@ -26,8 +31,8 @@ export const Tile = ({
             {!!subtitle && (
                 <SubTitle small={small}>{subtitle}</SubTitle>
             )}
-            
             <Tags genreIds={genreIds} />
+            <Vote small={small} vote={vote} />
         </ContentWrapper>
     </Wrapper>
 ) 
