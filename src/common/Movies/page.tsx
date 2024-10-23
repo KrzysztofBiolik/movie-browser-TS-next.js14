@@ -15,6 +15,8 @@ export const Movies = ({ movies }: { movies: MoviesListResult[] | undefined }) =
                 >
                     <Tile
                         small
+                        stretchVertically
+                        twoColumnsMobile
                         image={getImageUrl({
                             path: movie.poster_path,
                             size: "medium",
