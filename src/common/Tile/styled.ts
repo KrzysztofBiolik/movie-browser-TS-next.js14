@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.article<{ small?: boolean }>`
-    margin-top: 56px;
+export const Wrapper = styled.article<{ small?: boolean, center?: boolean }>`
     padding: 40px;
     box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
     background: ${({ theme }) => theme.colors.white};
@@ -24,6 +23,10 @@ export const Wrapper = styled.article<{ small?: boolean }>`
     padding: 16px;
     grid-gap: 16px;
     `}
+
+    ${({ center }) => center && css`
+        text-align: center;
+    `}
 `;
 
 export const ContentWrapper = styled.div`
@@ -40,20 +43,21 @@ export const Image = styled.div<{ url?: string | null }>`
     border-radius: 5px;
     `;
 
-export const Title = styled.header<{ small: boolean }>`
+export const Title = styled.header<{ small?: boolean }>`
     font-weight: 600;
     font-size: 36px;
     margin-top: 6px;
 
     ${({ small }) => small && css`
         font-weight: 500;
-        font-size:20px;
+        font-size:22px;
         margin-top:unset;
     `}
 `;
 
-export const SubTitle = styled.p<{ small: boolean }>`
-    margin-top:24px;
-    font-size: 22px;
+export const SubTitle = styled.p<{ small?: boolean }>`
+    margin-top: 10px;
+    margin-bottom:0;
+    font-size: 18px;
     color: ${({ theme }) => theme.colors.waterloo};
 `;

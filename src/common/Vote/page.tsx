@@ -6,7 +6,7 @@ interface VoteProps {
         average?: number,
         count?: number,
     },
-    small: boolean,
+    small?: boolean,
     backdrop?: boolean,
 }
 

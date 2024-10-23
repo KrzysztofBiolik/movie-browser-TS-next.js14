@@ -12,7 +12,8 @@ interface TileParametersProps {
         average?: number,
         count?: number,
     }
-    small: boolean,
+    small?: boolean,
+    center?: boolean,
 }
 
 export const Tile = ({
@@ -20,18 +21,21 @@ export const Tile = ({
     title,
     subtitle,
     genreIds,
-    small,
     vote,
+    small,
+    center
 }: TileParametersProps
 ) => (
-    <Wrapper small={small}>
+    <Wrapper small={small} center={center}>
         <Image url={image} />
         <ContentWrapper>
             <Title small={small}>{title}</Title>
             {!!subtitle && (
                 <SubTitle small={small}>{subtitle}</SubTitle>
             )}
-            <Tags genreIds={genreIds} />
+            {!!genreIds && (
+                <Tags genreIds={genreIds} />
+            )}
             <Vote small={small} vote={vote} />
         </ContentWrapper>
     </Wrapper>

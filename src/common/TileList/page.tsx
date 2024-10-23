@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled, { css } from "styled-components";
 
-export const TileList = styled.div<{ lessitems: boolean }>`
+export const TileList = styled.div<{ lessitems?: boolean }, {showJob?: boolean}>`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
     grid-gap: 16px;

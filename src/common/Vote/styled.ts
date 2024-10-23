@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.p<{ small: boolean, backdrop?: boolean }>`
+export const Wrapper = styled.p<{ small?: boolean, backdrop?: boolean }>`
     margin: 24px 0 0 0;
     display: flex;
     flex-wrap: wrap;
@@ -31,7 +31,7 @@ export const Wrapper = styled.p<{ small: boolean, backdrop?: boolean }>`
     `}
 `;
 
-export const Average = styled.strong<{ small: boolean, backdrop?: boolean }>`
+export const Average = styled.strong<{ small?: boolean, backdrop?: boolean }>`
     font-size: 22px;
     font-weight: 500;
     margin-left: 8px;
@@ -72,7 +72,7 @@ export const OutOf = styled.span<{ backdrop?: boolean }>`
     `}  
 `;
 
-export const Count = styled.span<{ noVotes: boolean, small: boolean, backdrop?: boolean }>`
+export const Count = styled.span<{ noVotes?: boolean, small?: boolean, backdrop?: boolean }>`
     margin-left: 8px;
 
     ${({ noVotes }) => noVotes && css`
