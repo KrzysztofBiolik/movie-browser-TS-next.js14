@@ -1,6 +1,6 @@
 "use client"
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Wrapper, StyledButton } from "./styled";
+import { Wrapper, StyledButton, StyledArrow, TextContainer, Text, Strong, ButtonText } from "./styled";
 import qs from "qs";
 
 interface PaginationProps {
@@ -89,24 +89,48 @@ export const Pagination = ({ totalPages }: { totalPages: number | undefined }) =
         <Wrapper>
             <StyledButton
                 onClick={onToFirstPage}
+                disabled={pageParam < 2}
             >
-                First
+                <StyledArrow left />
+                <StyledArrow left mobile />
+                <ButtonText>
+                    First
+                </ButtonText>
             </StyledButton>
             <StyledButton
                 onClick={onDecrement}
+                disabled={pageParam < 2}
             >
-                Previous
+                <StyledArrow left />
+                <ButtonText>
+                    Previous
+                </ButtonText>
             </StyledButton>
-            {maxPages}
+            <TextContainer>
+                <Text>Page</Text>
+                <Strong>{pageParam}</Strong>
+                <Text>of</Text>
+                <Strong>{maxPages}</Strong>
+            </TextContainer>
+
             <StyledButton
                 onClick={onIncrement}
+                disabled={pageParam === maxPages}
             >
-                Next
+                <ButtonText>
+                    Next
+                </ButtonText>
+                <StyledArrow />
             </StyledButton>
             <StyledButton
                 onClick={onToLastPage}
+                disabled={pageParam === maxPages}
             >
-                Last
+                <ButtonText>
+                    Last
+                </ButtonText>
+                <StyledArrow />
+                <StyledArrow mobile/>
             </StyledButton>
         </Wrapper>
 
