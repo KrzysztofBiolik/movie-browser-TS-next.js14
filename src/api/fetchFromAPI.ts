@@ -9,6 +9,7 @@ type fetchApiParameters = {
     parameters?: {
         page?: string;
         query?: string;
+        id?: string | string[];
     }
 }
 
