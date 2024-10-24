@@ -11,7 +11,7 @@ export const Movies = ({ movies }: { movies: MoviesListResult[] | PersonCast[] |
             {movies?.map(movie => (
                 <TileListLink
                     key={movie.id}
-                    href="movie"
+                    href={`/movies/${movie.id}`}
                 >
                     <Tile
                         small

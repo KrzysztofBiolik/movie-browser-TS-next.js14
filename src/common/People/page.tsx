@@ -1,16 +1,16 @@
 import { getImageUrl } from "@/api/getImageURL"
 import { Tile } from "../Tile/page"
 import { TileList, TileListLink } from "../TileList/page"
-import { PeopleListResult } from "../types"
+import { CastMember, CrewMember, PeopleListResult } from "../types"
 
-export const People = ({ people }: { people: PeopleListResult[] | undefined }) => {
+export const People = ({ people }: { people: PeopleListResult[] | CastMember[] | CrewMember[] | undefined }) => {
 
     return (
         <TileList >
             {people?.map(person => (
                 <TileListLink
                     key={person.id}
-                    href={`people/${person.id}`}
+                    href={`/people/${person.id}`}
                 >
                     <Tile
                         small

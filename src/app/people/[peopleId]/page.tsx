@@ -3,7 +3,6 @@ import { fetchFromAPI } from "@/api/fetchFromAPI";
 import { getImageUrl } from "@/api/getImageURL";
 import { Container } from "@/common/Container/page";
 import { Movies } from "@/common/Movies/page";
-import { People } from "@/common/People/page";
 import { SectionTitle } from "@/common/Section/SectionTitle/page";
 import { Tile } from "@/common/Tile/page";
 import { PersonCast, PersonCreditsResponse, PersonCrew, PersonDetailsResponse } from "@/common/types";
@@ -14,8 +13,7 @@ export default function PeopleDetails() {
 
     const { peopleId } = useParams();
 
-
-    const [movieDetails, movieCredits] = useQueries({
+    const [peopleDetails, peopleCredits] = useQueries({
         queries: [
             {
                 queryKey: ["peopleDetails", peopleId],
@@ -32,14 +30,14 @@ export default function PeopleDetails() {
         ],
     });
 
-    const { isLoading: detailsLoading, error: detailsError, data: personDetails } = movieDetails;
-    const { isLoading: creditsLoading, error: creditsError, data: creditsData } = movieCredits;
+    const { isLoading: detailsLoading, error: detailsError, data: personDetails } = peopleDetails;
+    const { isLoading: creditsLoading, error: creditsError, data: creditsData } = peopleCredits;
 
 
     const cast: PersonCast[] | undefined = creditsData?.cast;
     const crew: PersonCrew[] | undefined = creditsData?.crew;
 
-
+    if (detailsLoading && creditsLoading) return <p>lalala</p> ;
     return (
         <Container>
             <Tile
