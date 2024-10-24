@@ -6,8 +6,7 @@ interface GenresResultsProps {
     id?: number;
     name?: "string";
 }
-
-interface GenresResponseProps {
+export interface GenresResponseProps {
     genres?: GenresResultsProps[];
 }
 
