@@ -10,7 +10,7 @@ export const People = ({ people }: { people: PeopleListResult[] | undefined }) =
             {people?.map(person => (
                 <TileListLink
                     key={person.id}
-                    href="person"
+                    href={`people/${person.id}`}
                 >
                     <Tile
                         small
