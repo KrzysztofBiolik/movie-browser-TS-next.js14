@@ -14,6 +14,8 @@ interface TileParametersProps {
     }
     small?: boolean,
     center?: boolean,
+    stretchVertically?: boolean,
+    twoColumnsMobile?: boolean;
 }
 
 export const Tile = ({
@@ -23,12 +25,14 @@ export const Tile = ({
     genreIds,
     vote,
     small,
-    center
+    center,
+    stretchVertically,
+    twoColumnsMobile
 }: TileParametersProps
 ) => (
-    <Wrapper small={small} center={center}>
-        <Image url={image} />
-        <ContentWrapper>
+    <Wrapper small={small} center={center} columsOnMobile={twoColumnsMobile}>
+        <Image url={image} noImage={!image} />
+        <ContentWrapper stretchVertically={stretchVertically}>
             <Title small={small}>{title}</Title>
             {!!subtitle && (
                 <SubTitle small={small}>{subtitle}</SubTitle>

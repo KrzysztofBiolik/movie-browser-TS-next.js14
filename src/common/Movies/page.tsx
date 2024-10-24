@@ -1,10 +1,10 @@
 import { getImageUrl } from "@/api/getImageURL"
 import { Tile } from "../Tile/page"
 import { TileList, TileListLink } from "../TileList/page"
-import { MoviesListResult } from "../types"
+import { MoviesListResult, PersonCast, PersonCrew } from "../types"
 import { getYearFromDate } from "../Tile/getYearFromString"
 
-export const Movies = ({ movies }: { movies: MoviesListResult[] | undefined }) => {
+export const Movies = ({ movies }: { movies: MoviesListResult[] | PersonCast[] | PersonCrew[] | undefined }) => {
 
     return (
         <TileList lessitems>
@@ -15,6 +15,8 @@ export const Movies = ({ movies }: { movies: MoviesListResult[] | undefined }) =
                 >
                     <Tile
                         small
+                        stretchVertically
+                        twoColumnsMobile
                         image={getImageUrl({
                             path: movie.poster_path,
                             size: "medium",
