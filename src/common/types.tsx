@@ -1,3 +1,6 @@
+import { GenresResponseProps } from "./Tile/Tags/page";
+
+// MovieList
 export interface MoviesListResult {
     id: number;
     title: string;
@@ -18,6 +21,7 @@ export interface MoviesResponse {
     total_pages?: number;
 }
 
+//PeopleList
 export interface PeopleListResult {
     id: number;
     name?: string;
@@ -33,6 +37,7 @@ export interface PeopleResponse {
     total_pages?: number;
 }
 
+//PersonDetails
 export interface PersonDetailsResponse {
     birthday?: string | null;
     id?: number;
@@ -73,6 +78,51 @@ export interface PersonCreditsResponse {
     cast?: PersonCast[];
     crew?: PersonCrew[];
 }
+
+
+//MovieDetails
+
+export interface ProductionCountry {
+    iso_3166_1?: string;
+    name?: string;
+  }
+  
+  export interface MovieDetailsResponse {
+    backdrop_path?: string | null;
+    genres?: GenresResponseProps;
+    id?: number;
+    original_title?: string;
+    overview?: string | null;
+    poster_path?: string | null;
+    production_countries?: ProductionCountry[];
+    release_date?: string;
+    title?: string;
+    vote_average?: number;
+    vote_count?: number;
+  }
+
+  export interface CastMember {
+    id?: number;
+    name?: string;
+    profile_path?: string | null;
+    cast_id?: number;
+    character?: string;
+    job?: string;
+  }
+  
+  export interface CrewMember {
+    id?: number;
+    name?: string;
+    profile_path?: string | null;
+    credit_id?: number;
+    job?: string;
+    character?: string;
+  }
+  
+  export interface MovieCreditsResponse {
+    cast?: CastMember[];
+    crew?: CrewMember[];
+  }
 
 
 
