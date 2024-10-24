@@ -2,9 +2,9 @@ import { fetchFromAPI } from "@/api/fetchFromAPI";
 import { useQuery } from "@tanstack/react-query";
 import { Item, Wrapper } from "./styled";
 
-interface GenresResultsProps {
-    id?: number;
-    name?: "string";
+export interface GenresResultsProps {
+    id: number;
+    name: "string";
 }
 export interface GenresResponseProps {
     genres?: GenresResultsProps[];

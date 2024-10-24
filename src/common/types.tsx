@@ -1,4 +1,4 @@
-import { GenresResponseProps } from "./Tile/Tags/page";
+import { GenresResponseProps, GenresResultsProps } from "./Tile/Tags/page";
 
 // MovieList
 export interface MoviesListResult {
@@ -89,7 +89,7 @@ export interface ProductionCountry {
   
   export interface MovieDetailsResponse {
     backdrop_path?: string | null;
-    genres?: GenresResponseProps;
+    genres?: GenresResultsProps[];
     id?: number;
     original_title?: string;
     overview?: string | null;
