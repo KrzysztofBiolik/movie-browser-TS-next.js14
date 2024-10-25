@@ -13,4 +13,10 @@ export const Wrapper = styled.div`
     align-items: center;
     padding: 23px;
     margin: 0 auto;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.tabletHorizontalMax}px) { 
+        flex-direction: column;
+        padding: 16px;
+    }
 `;
+
