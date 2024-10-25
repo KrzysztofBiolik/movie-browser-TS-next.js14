@@ -10,38 +10,35 @@ interface VoteProps {
     backdrop?: boolean,
 }
 
-export const Vote = ({ vote, small, backdrop }: VoteProps) => {
-    return (
-        !!vote && (
-            <Wrapper
-                small={small}
-                backdrop={backdrop}>
-                {!!vote?.average && (
-                    <>
-                        <Average
-                            small={small}
-                            backdrop={backdrop}
-                        >
-                            {vote.average.toFixed(1)}
-                        </Average>
-                        <OutOf
-                            backdrop={backdrop}
-                        >
-                            / 10
-                        </OutOf>
-                    </>
-                )}
-                <Count
+export const Vote = ({ vote, small, backdrop }: VoteProps) => (
+    <Wrapper
+        small={small}
+        backdrop={backdrop}>
+
+        {!!vote?.average && (
+            <>
+                <Average
                     small={small}
                     backdrop={backdrop}
-                    noVotes={!vote?.count}
                 >
-                    {vote?.count
-                        ? `${vote.count} ${vote.count === 1 ? "vote" : "votes"}`
-                        : "no votes yet"
-                    }
-                </Count>
-            </Wrapper>
-        )
-    )
-};
+                    {vote.average.toFixed(1)}
+                </Average>
+                <OutOf
+                    backdrop={backdrop}
+                >
+                    / 10
+                </OutOf>
+            </>
+        )}
+        <Count
+            small={small}
+            backdrop={backdrop}
+            noVotes={!vote?.count}
+        >
+            {vote?.count
+                ? `${vote.count} ${vote.count === 1 ? "vote" : "votes"}`
+                : "no votes yet"
+            }
+        </Count>
+    </Wrapper>
+);
