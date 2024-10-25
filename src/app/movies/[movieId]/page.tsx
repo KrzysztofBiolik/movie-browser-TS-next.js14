@@ -9,6 +9,7 @@ import { Tile } from "@/common/Tile/page";
 import { CastMember, CrewMember, MovieCreditsResponse, MovieDetailsResponse, PersonCast, PersonCreditsResponse, PersonCrew, PersonDetailsResponse } from "@/common/types";
 import { useQueries } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
+import { Backdrop } from "./Backdrop/page";
 
 export default function MovieDetails() {
 
@@ -40,28 +41,31 @@ export default function MovieDetails() {
 
     if (detailsLoading && creditsLoading) return <p>lalala</p>;
     return (
-        <Container>
-            <Tile
-                image={getImageUrl({
-                    path: movieDetails?.poster_path,
-                    size:"medium",
-                })}
-                title={movieDetails?.title}
-                subtitle={getYearFromDate(movieDetails?.release_date)}
-                genreDetails={movieDetails?.genres}
-            />
-            {!!cast?.length && (
-                <>
-                    <SectionTitle> Cast ({cast?.length})</SectionTitle>
-                    <People people={cast} />
-                </>
-            )}
-            {!!crew?.length && (
-                <>
-                    <SectionTitle> Crew ({crew?.length})</SectionTitle>
-                    <People people={crew} />
-                </>
-            )}
-        </Container>
+        <>
+            <Backdrop backdrop={movieDetails} />
+            <Container>
+                <Tile
+                    image={getImageUrl({
+                        path: movieDetails?.poster_path,
+                        size: "medium",
+                    })}
+                    title={movieDetails?.title}
+                    subtitle={getYearFromDate(movieDetails?.release_date)}
+                    genreDetails={movieDetails?.genres}
+                />
+                {!!cast?.length && (
+                    <>
+                        <SectionTitle> Cast ({cast?.length})</SectionTitle>
+                        <People people={cast} />
+                    </>
+                )}
+                {!!crew?.length && (
+                    <>
+                        <SectionTitle> Crew ({crew?.length})</SectionTitle>
+                        <People people={crew} />
+                    </>
+                )}
+            </Container>
+        </>
     )
 }
