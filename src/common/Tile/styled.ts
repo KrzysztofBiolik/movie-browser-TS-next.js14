@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import noMovieIcon from "../../icons/NoMoviePoster.svg";
 
 export const Wrapper = styled.article<{ small?: boolean, center?: boolean, columsOnMobile?: boolean }>`
     padding: 40px;
@@ -48,14 +49,13 @@ export const Wrapper = styled.article<{ small?: boolean, center?: boolean, colum
         }
     `}
 
-    ${({columsOnMobile}) => columsOnMobile && css`
-        @media(max-width: ${({theme}) => theme.breakpoints.mobileHorizontalMax}px) {
+    ${({ columsOnMobile }) => columsOnMobile && css`
+        @media(max-width: ${({ theme }) => theme.breakpoints.tabletVerticalMax}px) {
             grid-template-columns: 114px 1fr;
             grid-template-areas: "picture meta";
             grid-template-rows: auto;
             padding: 16px;
         }
-    
     `}
 
     ${({ center }) => center && css`
@@ -68,26 +68,41 @@ export const ContentWrapper = styled.div<{ stretchVertically?: boolean }>`
     grid-template-columns: 1fr;
     align-content:start;
 
-    ${({stretchVertically}) => stretchVertically && css`
+    ${({ stretchVertically }) => stretchVertically && css`
     align-content: stretch;
 
-        @media(max-width: ${({theme}) => theme.breakpoints.mobileHorizontalMax}px) {
+        @media(max-width: ${({ theme }) => theme.breakpoints.mobileHorizontalMax}px) {
             align-content: start;
         }
     `}
 `;
 
-export const Image = styled.div<{ url?: string | null, noImage?: boolean }>`
+export const Image = styled.div<{ url?: string | null, placeholder?: string, noImage?: boolean }>`
     padding-top: calc(100% * 632 / 421);
     background: url(${({ url }) => url});
     background-size: cover;
     background-position: center;
     border-radius: 5px;
 
-    ${({noImage}) => noImage && css`
-        background-color: ${({theme}) => theme.colors.silver};
+    ${({ noImage }) => noImage && css`
+        background-color: ${({ theme }) => theme.colors.silver};
         background-repeat: no-repeat;
+        aspect-ratio: 2/3;
+        padding: 0 ;
+        display:flex;
+        justify-content: center;
+        align-items: center;
     `}
+`;
+
+export const NoMovieIcon = styled(noMovieIcon)`
+    width: 72px;
+	height: 72px;
+
+	@media (max-width: ${({ theme }) => theme.breakpoints.mobileHorizontalMax}px) {
+		width: 48px;
+		height: 48px;
+	}
 `;
 
 export const Title = styled.header<{ small?: boolean }>`

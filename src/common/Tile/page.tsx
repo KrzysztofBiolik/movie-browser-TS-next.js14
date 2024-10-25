@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { ContentWrapper, Image, SubTitle, Title, Wrapper } from "./styled";
-import { GenresResponseProps, GenresResultsProps, Tags } from "./Tags/page";
+import { ContentWrapper, Image, NoMovieIcon, SubTitle, Title, Wrapper } from "./styled";
+import { GenresResultsProps, Tags } from "./Tags/page";
 import { Vote } from "../Vote/page";
 import { TagsDetails } from "./Tags/TagsDetails/page";
 
@@ -32,20 +32,27 @@ export const Tile = ({
     stretchVertically,
     twoColumnsMobile
 }: TileParametersProps
-) => (
-    <Wrapper small={small} center={center} columsOnMobile={twoColumnsMobile}>
-        <Image url={image} noImage={!image} />
-        <ContentWrapper stretchVertically={stretchVertically}>
-            <Title small={small}>{title}</Title>
-            {!!subtitle && (
-                <SubTitle small={small}>{subtitle}</SubTitle>
-            )}
-            {genreIds && (
-                <Tags genreIds={genreIds} />
-            )}
-            <TagsDetails genreDetails={genreDetails} />
-
-            <Vote small={small} vote={vote} />
-        </ContentWrapper>
-    </Wrapper>
-) 
+) => {
+    return (
+        <Wrapper small={small} center={center} columsOnMobile={twoColumnsMobile}>
+            <Image url={image} noImage={!image}>
+                {!image &&  (
+                    <NoMovieIcon />
+                )}
+            </Image>
+            <ContentWrapper stretchVertically={stretchVertically}>
+                <Title small={small}>{title}</Title>
+                {!!subtitle && (
+                    <SubTitle small={small}>{subtitle}</SubTitle>
+                )}
+                {genreIds && (
+                    <Tags genreIds={genreIds} />
+                )}
+                {genreDetails && (
+                    <TagsDetails genreDetails={genreDetails} />
+                )}
+                <Vote small={small} vote={vote} />
+            </ContentWrapper>
+        </Wrapper>
+    )
+} 
