@@ -26,15 +26,17 @@ export const Tags = ({ genreIds }: { genreIds?: number[] }) => {
     );
 
     return (
-        <Wrapper>
-            {filteredGenres?.map(
-                (genre) =>
-                    genre?.map(({ name }) => (
-                        <Item key={name}>
-                            {name}
-                        </Item>
-                    ))
-            )}
-        </Wrapper>
+        !!filteredGenres?.length && (
+            <Wrapper>
+                {filteredGenres?.map(
+                    (genre) =>
+                        genre?.map(({ name }) => (
+                            <Item key={name}>
+                                {name}
+                            </Item>
+                        ))
+                )}
+            </Wrapper>
+        )
     )
 }
