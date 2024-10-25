@@ -9,6 +9,7 @@ export const useReplaceQueryParameter = () => {
 
     const router = useRouter();
     const pathname = usePathname();
+    const path = pathname.startsWith("/movies") ? "/movies" : "/people";
 
     return ({ key, value }: QueryParameterProps) => {
         const searchParams = new URLSearchParams();
@@ -21,6 +22,6 @@ export const useReplaceQueryParameter = () => {
 
         }
 
-        router.replace(`${pathname}?${searchParams.toString()} `);
+        router.replace(`${path}?${searchParams.toString()} `);
     };
 };
