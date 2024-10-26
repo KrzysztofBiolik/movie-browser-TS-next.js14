@@ -1,20 +1,19 @@
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.p<{ small?: boolean, backdrop?: boolean }>`
+export const Wrapper = styled.div<{ small?: boolean, backdrop?: boolean }>`
     margin: 24px 0 0 0;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: end;
     font-size: 14px;
 
     ${({ small }) => small && css`
-    margin: 16px 0 0 0;
-    margin-top: 12px;
-    align-items: end;
+        margin: 16px 0 0 0;
+        margin-top:auto;
     `}
 
     @media(max-width: ${({ theme }) => theme.breakpoints.mobileHorizontalMax}px) {
-        margin: 16px 0 0 0;
+        margin: 6px 0 0 0;
     }
 
     @media(max-width: ${({ theme }) => theme.breakpoints.mobileVerticalMax}px) {

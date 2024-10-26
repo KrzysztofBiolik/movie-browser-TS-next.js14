@@ -36,21 +36,23 @@ export const Tile = ({
     return (
         <Wrapper small={small} center={center} columsOnMobile={twoColumnsMobile}>
             <Image url={image} noImage={!image}>
-                {!image &&  (
+                {!image && (
                     <NoMovieIcon />
                 )}
             </Image>
             <ContentWrapper stretchVertically={stretchVertically}>
-                <Title small={small}>{title}</Title>
-                {!!subtitle && (
-                    <SubTitle small={small}>{subtitle}</SubTitle>
-                )}
-                {genreIds && (
-                    <Tags genreIds={genreIds} />
-                )}
-                {genreDetails && (
-                    <TagsDetails genreDetails={genreDetails} />
-                )}
+                <div>
+                    <Title small={small}>{title}</Title>
+                    {!!subtitle && (
+                        <SubTitle small={small}>{subtitle}</SubTitle>
+                    )}
+                    {genreIds && (
+                        <Tags genreIds={genreIds} />
+                    )}
+                    {genreDetails && (
+                        <TagsDetails genreDetails={genreDetails} />
+                    )}
+                </div>
                 <Vote small={small} vote={vote} />
             </ContentWrapper>
         </Wrapper>

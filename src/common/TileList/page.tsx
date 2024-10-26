@@ -17,12 +17,12 @@ export const TileList = styled.div<{ lessitems?: boolean }, { showJob?: boolean 
 
             @media(max-width: ${({ theme }) => theme.breakpoints.tabletVerticalMax}px) {
                 grid-template-columns: repeat(2, 1fr);
+            }
 
             @media(max-width: ${({ theme }) => theme.breakpoints.mobileVerticalMax}px) {
                 grid-template-columns: 1fr;
             }
-        }
-    `}
+        `}
 `;
 
 export const TileListLink = styled(Link)`
