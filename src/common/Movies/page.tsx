@@ -23,10 +23,10 @@ export const Movies = ({ movies }: { movies: MoviesListResult[] | PersonCast[] |
                         })}
                         title={movie.title}
                         genreIds={movie?.genre_ids || undefined}
-                        vote={movie.vote_count ? {
+                        vote={{
                             average: movie.vote_average,
                             count: movie.vote_count,
-                        } : undefined} 
+                        }}
                         subtitle={(
                             movie.job || movie.character
                                 ? (

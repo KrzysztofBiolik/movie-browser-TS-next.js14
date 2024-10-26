@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { Average, Count, OutOf, Wrapper } from "./styled";
 
 interface VoteProps {
@@ -30,15 +29,17 @@ export const Vote = ({ vote, small, backdrop }: VoteProps) => (
                 </OutOf>
             </>
         )}
-        <Count
-            small={small}
-            backdrop={backdrop}
-            noVotes={!vote?.count}
-        >
-            {vote?.count
-                ? `${vote.count} ${vote.count === 1 ? "vote" : "votes"}`
-                : "no votes yet"
-            }
-        </Count>
+        {!!vote && (
+            <Count
+                small={small}
+                backdrop={backdrop}
+                noVotes={!vote?.count}
+            >
+                {vote?.count
+                    ? `${vote.count} ${vote.count === 1 ? "vote" : "votes"}`
+                    : "no votes yet"
+                } 
+            </Count>
+        )}
     </Wrapper>
 );

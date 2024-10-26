@@ -52,6 +52,10 @@ export default function MovieDetails() {
                     title={movieDetails?.title}
                     subtitle={getYearFromDate(movieDetails?.release_date)}
                     genreDetails={movieDetails?.genres}
+                    vote={{
+                        average: movieDetails?.vote_average,
+                        count: movieDetails?.vote_count,
+                    }}
                 />
                 {!!cast?.length && (
                     <>
