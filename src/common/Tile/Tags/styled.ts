@@ -6,8 +6,10 @@ export const Wrapper = styled.ul`
     gap: 8px ;
     list-style: none;
     padding:0;
+    margin-top:8px;
 
     @media(max-width: ${({theme}) => theme.breakpoints.mobileHorizontalMax}px) {
+        margin-bottom: 0;
         gap:4px;
     }
 `;
@@ -20,7 +22,7 @@ export const Item = styled.li`
 
     @media(max-width: ${({theme}) => theme.breakpoints.tabletVerticalMax}px) {
         padding: 4px 8px;
-        font-size: 10px;
+        font-size: 12px;
     }
 
 

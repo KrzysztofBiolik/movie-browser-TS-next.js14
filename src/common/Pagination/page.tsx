@@ -1,11 +1,9 @@
+/* eslint-disable no-unused-expressions */
 "use client"
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Wrapper, StyledButton, StyledArrow, TextContainer, Text, Strong, ButtonText } from "./styled";
 import qs from "qs";
 
-interface PaginationProps {
-    total_pages: number | undefined;
-}
 
 export const Pagination = ({ totalPages }: { totalPages: number | undefined }) => {
 
@@ -17,71 +15,76 @@ export const Pagination = ({ totalPages }: { totalPages: number | undefined }) =
     const maxPages = query ? totalPages : 500;
 
     const onToFirstPage = () => {
-        query ?
+        if (query) {
             router.replace(
                 `${pathname}?` +
                 qs.stringify(
                     { page: 1, query: query },
                 )
             )
-            :
+        } else {
             router.replace(
                 `${pathname}?` +
                 qs.stringify(
                     { page: 1 }
                 )
             )
+        }
     };
 
     const onDecrement = () => {
-        query ?
+        if (query) {
             router.replace(
                 `${pathname}?` +
                 qs.stringify(
                     { page: pageParam - 1, query: query },
                 )
             )
-            :
+        }
+        else {
             router.replace(
                 `${pathname}?` +
                 qs.stringify(
                     { page: pageParam - 1 }
                 )
             )
+        }
     };
 
     const onIncrement = () => {
-        query ?
+        if (query) {
             router.replace(
                 `${pathname}?` +
                 qs.stringify(
                     { page: pageParam + 1, query: query },
                 )
             )
-            :
+        } else {
             router.replace(
                 `${pathname}?` +
                 qs.stringify(
                     { page: pageParam + 1 }
                 )
             )
+        }
     };
 
     const onToLastPage = () => {
-        query ?
+        if (query) {
             router.replace(
                 `${pathname}?` +
                 qs.stringify(
                     { page: maxPages, query: query },
                 )
             )
-            :
+        } else {
             router.replace(
                 `${pathname}?` +
                 qs.stringify(
                     { page: maxPages }
                 )
             )
+        }
     };
 
 
@@ -130,7 +133,7 @@ export const Pagination = ({ totalPages }: { totalPages: number | undefined }) =
                     Last
                 </ButtonText>
                 <StyledArrow />
-                <StyledArrow mobile/>
+                <StyledArrow mobile />
             </StyledButton>
         </Wrapper>
 

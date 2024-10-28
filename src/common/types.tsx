@@ -1,4 +1,4 @@
-import { GenresResponseProps, GenresResultsProps } from "./Tile/Tags/page";
+import { GenresResultsProps } from "./Tile/Tags/page";
 
 // MovieList
 export interface MoviesListResult {
