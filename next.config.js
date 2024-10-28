@@ -7,12 +7,15 @@ function defineNextConfig(config) {
 
 
 export default defineNextConfig({
-    reactStrictMode: true,
     compiler: {
         styledComponents: true,
     },
     experimental: {
         missingSuspenseWithCSRBailout: false,
+        appDir: true,
+    },
+    images: {
+        domains: ["image.tmdb.org"],
     },
     typescript: {
         ignoreBuildErrors: true,
@@ -27,10 +30,19 @@ export default defineNextConfig({
         ];
     },
     webpack(config) {
-        config.module.rules.push({
-            test: /\.svg$/,
-            use: [{ loader: "@svgr/webpack", options: { icon: true } }],
-        });
+        const fileLoaderRule = config.module.rules.find((rule) =>
+            rule.test?.test?.(".svg")
+        );
+
+        config.module.rules.push(
+            {
+                ...fileLoaderRule,
+                test: /\.svg$/,
+                use: [{ loader: "@svgr/webpack", options: { icon: true } }],
+            }
+        );
+
+        fileLoaderRule.exclude = /\.svg$/i;
 
         return config;
     }
