@@ -8,7 +8,6 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { MoviesResponse } from "@/common/types";
 import { Pagination } from "@/common/Pagination/page";
-import { TileList } from "@/common/TileList/page";
 import { Container } from "@/common/Container/page";
 import { Movies } from "@/common/Movies/page";
 
@@ -27,7 +26,7 @@ export default function MovieList() {
         }
     }, [searchParams]);
 
-    const { isPending, isError, data: rawData } = useQuery({
+    const { isPending, data: rawData } = useQuery({
         queryKey: ["movieList", page, query],
         queryFn: () => fetchFromAPI<MoviesResponse>({
             path,
@@ -44,7 +43,7 @@ export default function MovieList() {
 
         <Container>
             <Header>Movies Page</Header>
-           <Movies movies={rawData?.results}/>
+            <Movies movies={rawData?.results} />
             <Pagination totalPages={rawData?.total_pages} />
         </Container>
     )

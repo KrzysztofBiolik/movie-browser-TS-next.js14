@@ -30,8 +30,8 @@ export default function PeopleDetails() {
         ],
     });
 
-    const { isLoading: detailsLoading, error: detailsError, data: personDetails } = peopleDetails;
-    const { isLoading: creditsLoading, error: creditsError, data: creditsData } = peopleCredits;
+    const { isLoading: detailsLoading, data: personDetails } = peopleDetails;
+    const { isLoading: creditsLoading, data: creditsData } = peopleCredits;
 
 
     const cast: PersonCast[] | undefined = creditsData?.cast;

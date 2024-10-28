@@ -6,7 +6,7 @@ import { People } from "@/common/People/page";
 import { SectionTitle } from "@/common/Section/SectionTitle/page";
 import { getYearFromDate } from "@/common/Tile/getYearFromString";
 import { Tile } from "@/common/Tile/page";
-import { CastMember, CrewMember, MovieCreditsResponse, MovieDetailsResponse, PersonCast, PersonCreditsResponse, PersonCrew, PersonDetailsResponse } from "@/common/types";
+import { CastMember, CrewMember, MovieCreditsResponse, MovieDetailsResponse} from "@/common/types";
 import { useQueries } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import { Backdrop } from "./Backdrop/page";
@@ -32,8 +32,8 @@ export default function MovieDetails() {
         ],
     });
 
-    const { isLoading: detailsLoading, error: detailsError, data: movieDetails } = moviesDetails;
-    const { isLoading: creditsLoading, error: creditsError, data: creditsData } = moviesCredits;
+    const { isLoading: detailsLoading, data: movieDetails } = moviesDetails;
+    const { isLoading: creditsLoading, data: creditsData } = moviesCredits;
 
 
     const cast: CastMember[] | undefined = creditsData?.cast;
