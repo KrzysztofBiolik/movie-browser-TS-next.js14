@@ -11,6 +11,9 @@ export default defineNextConfig({
     compiler: {
         styledComponents: true,
     },
+    experimental: {
+        missingSuspenseWithCSRBailout: false,
+    },
     typescript: {
         ignoreBuildErrors: true,
     },
