@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "next build ",
+    "start": "next start "
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
