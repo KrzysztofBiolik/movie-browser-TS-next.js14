@@ -10,10 +10,6 @@ export default defineNextConfig({
     compiler: {
         styledComponents: true,
     },
-    experimental: {
-        missingSuspenseWithCSRBailout: false,
-        appDir: true,
-    },
     images: {
         domains: ["image.tmdb.org"],
     },
