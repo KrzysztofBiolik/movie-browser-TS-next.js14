@@ -15,7 +15,6 @@ export default defineNextConfig({
     },
     experimental: {
         missingSuspenseWithCSRBailout: false,
-        appDir: true,
     },
     typescript: {
         ignoreBuildErrors: true,
