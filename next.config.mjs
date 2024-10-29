@@ -13,6 +13,10 @@ export default defineNextConfig({
     images: {
         domains: ["image.tmdb.org"],
     },
+    experimental: {
+        missingSuspenseWithCSRBailout: false,
+        appDir: true,
+    },
     typescript: {
         ignoreBuildErrors: true,
     },
