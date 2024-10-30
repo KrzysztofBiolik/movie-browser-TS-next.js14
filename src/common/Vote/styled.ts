@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import StarSVG from "../../icons/star.svg"
 
 export const Wrapper = styled.div<{ small?: boolean, backdrop?: boolean }>`
     margin: 24px 0 0 0;
@@ -8,7 +9,6 @@ export const Wrapper = styled.div<{ small?: boolean, backdrop?: boolean }>`
     font-size: 14px;
 
     ${({ small }) => small && css`
-        margin: 16px 0 0 0;
         margin-top:auto;
     `}
 
@@ -28,6 +28,17 @@ export const Wrapper = styled.div<{ small?: boolean, backdrop?: boolean }>`
             margin: 8px 0;
         }
     `}
+`;
+
+export const Star = styled(StarSVG)`
+    height: 22px;
+    width: auto;
+    transform: translateY(-8%);
+    
+    ${({backdrop}) => backdrop && css`
+    height: 35px;
+    `}
+    
 `;
 
 export const Average = styled.strong<{ small?: boolean, backdrop?: boolean }>`

@@ -1,4 +1,4 @@
-import { Average, Count, OutOf, Wrapper } from "./styled";
+import {Average, Count, OutOf, Star, Wrapper} from "./styled";
 
 interface VoteProps {
     vote?: {
@@ -9,13 +9,14 @@ interface VoteProps {
     backdrop?: boolean,
 }
 
-export const Vote = ({ vote, small, backdrop }: VoteProps) => (
+export const Vote = ({vote, small, backdrop}: VoteProps) => (
     <Wrapper
         small={small}
         backdrop={backdrop}>
 
         {!!vote?.average && (
             <>
+                <Star backdrop={backdrop}/>
                 <Average
                     small={small}
                     backdrop={backdrop}
@@ -38,7 +39,7 @@ export const Vote = ({ vote, small, backdrop }: VoteProps) => (
                 {vote?.count
                     ? `${vote.count} ${vote.count === 1 ? "vote" : "votes"}`
                     : "no votes yet"
-                } 
+                }
             </Count>
         )}
     </Wrapper>
