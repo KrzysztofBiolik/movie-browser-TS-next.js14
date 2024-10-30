@@ -1,17 +1,18 @@
 "use client"
-import { fetchFromAPI } from "@/api/fetchFromAPI";
-import { getImageUrl } from "@/api/getImageURL";
-import { Container } from "@/common/Container/page";
-import { Movies } from "@/common/Movies/page";
-import { SectionTitle } from "@/common/Section/SectionTitle/page";
-import { Tile } from "@/common/Tile/page";
-import { PersonCast, PersonCreditsResponse, PersonCrew, PersonDetailsResponse } from "@/common/types";
-import { useQueries } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
+import {fetchFromAPI} from "@/api/fetchFromAPI";
+import {getImageUrl} from "@/api/getImageURL";
+import {Container} from "@/common/Container/page";
+import {Movies} from "@/common/Movies/page";
+import {SectionTitle} from "@/common/Section/SectionTitle/page";
+import {Tile} from "@/common/Tile/page";
+import {PersonCast, PersonCreditsResponse, PersonCrew, PersonDetailsResponse} from "@/common/types";
+import {useQueries} from "@tanstack/react-query";
+import {useParams} from "next/navigation";
+import {Loading} from "@/common/Loading/page";
 
 export default function PeopleDetails() {
 
-    const { peopleId } = useParams();
+    const {peopleId} = useParams();
 
     const [peopleDetails, peopleCredits] = useQueries({
         queries: [
@@ -30,14 +31,14 @@ export default function PeopleDetails() {
         ],
     });
 
-    const { isLoading: detailsLoading, data: personDetails } = peopleDetails;
-    const { isLoading: creditsLoading, data: creditsData } = peopleCredits;
+    const {isLoading: detailsLoading, data: personDetails} = peopleDetails;
+    const {isLoading: creditsLoading, data: creditsData} = peopleCredits;
 
 
     const cast: PersonCast[] | undefined = creditsData?.cast;
     const crew: PersonCrew[] | undefined = creditsData?.crew;
 
-    if (detailsLoading && creditsLoading) return <p>lalala</p> ;
+    if (detailsLoading && creditsLoading) return <Loading/> ;
     return (
         <Container>
             <Tile
@@ -48,9 +49,9 @@ export default function PeopleDetails() {
                 title={`${personDetails?.name} (${personDetails?.known_for_department})`}
             />
             <SectionTitle>Movies - Cast ({cast?.length})</SectionTitle>
-            <Movies movies={cast} />
+            <Movies movies={cast}/>
             <SectionTitle>Movies - Crew ({crew?.length})</SectionTitle>
-            <Movies movies={crew} />
+            <Movies movies={crew}/>
         </Container>
     )
 }

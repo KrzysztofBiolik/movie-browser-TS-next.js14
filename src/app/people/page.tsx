@@ -7,6 +7,7 @@ import { PeopleResponse } from "@/common/types";
 import { Pagination } from "@/common/Pagination/page";
 import { Container } from "@/common/Container/page";
 import { People } from "@/common/People/page";
+import {Loading} from "@/common/Loading/page";
 
 export default function PeopleList() {
 
@@ -34,7 +35,7 @@ export default function PeopleList() {
         }),
     });
 
-    if (isPending) { return <p>Ładowanie</p> }
+    if (isPending) { return <Loading/> }
 
     return (
 

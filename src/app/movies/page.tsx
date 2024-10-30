@@ -1,15 +1,16 @@
 "use client"
 
-import { fetchFromAPI } from "@/api/fetchFromAPI";
-import { useQuery } from "@tanstack/react-query";
-import { Header } from "./styled";
-import { useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
-import { MoviesResponse } from "@/common/types";
-import { Pagination } from "@/common/Pagination/page";
-import { Container } from "@/common/Container/page";
-import { Movies } from "@/common/Movies/page";
+import {fetchFromAPI} from "@/api/fetchFromAPI";
+import {useQuery} from "@tanstack/react-query";
+import {Header} from "./styled";
+import {useEffect} from "react";
+import {useSearchParams} from "next/navigation";
+import {useRouter} from "next/navigation";
+import {MoviesResponse} from "@/common/types";
+import {Pagination} from "@/common/Pagination/page";
+import {Container} from "@/common/Container/page";
+import {Movies} from "@/common/Movies/page";
+import {Loading} from "@/common/Loading/page";
 
 export default function MovieList() {
 
@@ -26,7 +27,7 @@ export default function MovieList() {
         }
     }, [searchParams]);
 
-    const { isPending, data: rawData } = useQuery({
+    const {isPending, data: rawData} = useQuery({
         queryKey: ["movieList", page, query],
         queryFn: () => fetchFromAPI<MoviesResponse>({
             path,
@@ -37,14 +38,16 @@ export default function MovieList() {
         }),
     });
 
-    if (isPending) { return <p>Ładowanie</p> }
+    if (isPending) {
+        return <Loading/>
+    }
 
     return (
 
         <Container>
             <Header>Movies Page</Header>
-            <Movies movies={rawData?.results} />
-            <Pagination totalPages={rawData?.total_pages} />
+            <Movies movies={rawData?.results}/>
+            <Pagination totalPages={rawData?.total_pages}/>
         </Container>
     )
 }
