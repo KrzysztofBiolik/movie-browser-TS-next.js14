@@ -9,6 +9,7 @@ import {PersonCast, PersonCreditsResponse, PersonCrew, PersonDetailsResponse} fr
 import {useQueries} from "@tanstack/react-query";
 import {useParams} from "next/navigation";
 import {Loading} from "@/common/Loading/page";
+import {Error} from "@/common/Error/page";
 
 export default function PeopleDetails() {
 
@@ -31,14 +32,15 @@ export default function PeopleDetails() {
         ],
     });
 
-    const {isLoading: detailsLoading, data: personDetails} = peopleDetails;
-    const {isLoading: creditsLoading, data: creditsData} = peopleCredits;
+    const {isLoading: detailsLoading, isError: detailsError, data: personDetails} = peopleDetails;
+    const {isLoading: creditsLoading, isError: creditsError, data: creditsData} = peopleCredits;
 
 
     const cast: PersonCast[] | undefined = creditsData?.cast;
     const crew: PersonCrew[] | undefined = creditsData?.crew;
 
-    if (detailsLoading && creditsLoading) return <Loading/> ;
+    if (detailsLoading && creditsLoading) return <Loading/>;
+    if (detailsError && creditsError) return <Error/>;
     return (
         <Container>
             <Tile

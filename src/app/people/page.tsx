@@ -1,13 +1,14 @@
 "use client"
-import { fetchFromAPI } from "@/api/fetchFromAPI";
-import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
-import { PeopleResponse } from "@/common/types";
-import { Pagination } from "@/common/Pagination/page";
-import { Container } from "@/common/Container/page";
-import { People } from "@/common/People/page";
+import {fetchFromAPI} from "@/api/fetchFromAPI";
+import {useQuery} from "@tanstack/react-query";
+import {useEffect} from "react";
+import {useSearchParams, useRouter} from "next/navigation";
+import {PeopleResponse} from "@/common/types";
+import {Pagination} from "@/common/Pagination/page";
+import {Container} from "@/common/Container/page";
+import {People} from "@/common/People/page";
 import {Loading} from "@/common/Loading/page";
+import {Error} from "@/common/Error/page";
 
 export default function PeopleList() {
 
@@ -24,7 +25,7 @@ export default function PeopleList() {
         }
     }, [searchParams]);
 
-    const { isPending, data: rawData } = useQuery({
+    const {isPending, isError, data: rawData} = useQuery({
         queryKey: ["peopleList", page, query],
         queryFn: () => fetchFromAPI<PeopleResponse>({
             path,
@@ -35,13 +36,16 @@ export default function PeopleList() {
         }),
     });
 
-    if (isPending) { return <Loading/> }
+    if (isPending) {
+        return <Loading/>
+    }
+    if (isError) return <Error/>
 
     return (
 
         <Container>
-            <People people={rawData?.results} />
-            <Pagination totalPages={rawData?.total_pages} />
+            <People people={rawData?.results}/>
+            <Pagination totalPages={rawData?.total_pages}/>
         </Container>
     )
 }

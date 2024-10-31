@@ -11,6 +11,7 @@ import {useQueries} from "@tanstack/react-query";
 import {useParams} from "next/navigation";
 import {Backdrop} from "./Backdrop/page";
 import {Loading} from "@/common/Loading/page";
+import {Error} from "@/common/Error/page";
 
 export default function MovieDetails() {
 
@@ -33,31 +34,36 @@ export default function MovieDetails() {
         ],
     });
 
-    const {isLoading: detailsLoading, data: movieDetails} = moviesDetails;
-    const {isLoading: creditsLoading, data: creditsData} = moviesCredits;
+    const {isLoading: detailsLoading, isError: detailsError, data: movieDetails} = moviesDetails;
+    const {isLoading: creditsLoading, isError: creditsError, data: creditsData} = moviesCredits;
 
 
     const cast: CastMember[] | undefined = creditsData?.cast;
     const crew: CrewMember[] | undefined = creditsData?.crew;
 
     if (detailsLoading && creditsLoading) return <Loading/>;
+    if (detailsError && creditsError) return <Error/>;
     return (
         <>
-            <Backdrop backdrop={movieDetails}/>
+            {!!movieDetails && (
+                <Backdrop backdrop={movieDetails}/>
+            )}                
             <Container>
-                <Tile
-                    image={getImageUrl({
-                        path: movieDetails?.poster_path,
-                        size: "medium",
-                    })}
-                    title={movieDetails?.title}
-                    subtitle={getYearFromDate(movieDetails?.release_date)}
-                    genreDetails={movieDetails?.genres}
-                    vote={{
-                        average: movieDetails?.vote_average,
-                        count: movieDetails?.vote_count,
-                    }}
-                />
+                {!!movieDetails && (
+                    <Tile
+                        image={getImageUrl({
+                            path: movieDetails?.poster_path,
+                            size: "medium",
+                        })}
+                        title={movieDetails?.title}
+                        subtitle={getYearFromDate(movieDetails?.release_date)}
+                        genreDetails={movieDetails?.genres}
+                        vote={{
+                            average: movieDetails?.vote_average,
+                            count: movieDetails?.vote_count,
+                        }}
+                    />
+                )}
                 {!!cast?.length && (
                     <>
                         <SectionTitle> Cast ({cast?.length})</SectionTitle>

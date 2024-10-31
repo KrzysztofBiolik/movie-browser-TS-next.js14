@@ -11,6 +11,7 @@ import {Pagination} from "@/common/Pagination/page";
 import {Container} from "@/common/Container/page";
 import {Movies} from "@/common/Movies/page";
 import {Loading} from "@/common/Loading/page";
+import {Error} from "@/common/Error/page";
 
 export default function MovieList() {
 
@@ -27,7 +28,7 @@ export default function MovieList() {
         }
     }, [searchParams]);
 
-    const {isPending, data: rawData} = useQuery({
+    const {isPending, isError, data: rawData} = useQuery({
         queryKey: ["movieList", page, query],
         queryFn: () => fetchFromAPI<MoviesResponse>({
             path,
@@ -38,9 +39,8 @@ export default function MovieList() {
         }),
     });
 
-    if (isPending) {
-        return <Loading/>
-    }
+    if (isPending) {return <Loading/>}
+    if (isError) {return <Error/>}
 
     return (
 
