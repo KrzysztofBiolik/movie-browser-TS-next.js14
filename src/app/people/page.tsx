@@ -9,6 +9,8 @@ import {Container} from "@/common/Container/page";
 import {People} from "@/common/People/page";
 import {Loading} from "@/common/Loading/page";
 import {Error} from "@/common/Error/page";
+import {SearchResults} from "@/common/SearchResults/page";
+import {Header} from "@/app/movies/styled";
 
 export default function PeopleList() {
 
@@ -37,13 +39,21 @@ export default function PeopleList() {
     });
 
     if (isPending) {
-        return <Loading/>
+        return <Loading
+            searchQuery={query}
+        />
     }
     if (isError) return <Error/>
 
     return (
-
         <Container>
+            <Header>People Page</Header>
+            {!!query && (
+                <SearchResults
+                    searchQuery={query}
+                    searchTotalResults={rawData?.total_results}
+                />
+            )}
             <People people={rawData?.results}/>
             <Pagination totalPages={rawData?.total_pages}/>
         </Container>

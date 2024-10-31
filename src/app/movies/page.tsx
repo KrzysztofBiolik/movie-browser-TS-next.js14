@@ -12,6 +12,7 @@ import {Container} from "@/common/Container/page";
 import {Movies} from "@/common/Movies/page";
 import {Loading} from "@/common/Loading/page";
 import {Error} from "@/common/Error/page";
+import {SearchResults} from "@/common/SearchResults/page";
 
 export default function MovieList() {
 
@@ -39,13 +40,24 @@ export default function MovieList() {
         }),
     });
 
-    if (isPending) {return <Loading/>}
-    if (isError) {return <Error/>}
+    if (isPending) {
+        return <Loading
+            searchQuery={query}/>
+    }
+    if (isError) {
+        return <Error/>
+    }
 
     return (
 
         <Container>
             <Header>Movies Page</Header>
+            {!!query && (
+                <SearchResults
+                    searchQuery={query}
+                    searchTotalResults={rawData?.total_results}
+                />
+            )}
             <Movies movies={rawData?.results}/>
             <Pagination totalPages={rawData?.total_pages}/>
         </Container>
