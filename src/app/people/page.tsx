@@ -11,6 +11,7 @@ import {Loading} from "@/common/Loading/page";
 import {Error} from "@/common/Error/page";
 import {SearchResults} from "@/common/SearchResults/page";
 import {Header} from "@/app/movies/styled";
+import {NoResults} from "@/common/NoResults/page";
 
 export default function PeopleList() {
 
@@ -42,6 +43,10 @@ export default function PeopleList() {
         return <Loading
             searchQuery={query}
         />
+    }
+    if (!isPending && !rawData?.results?.length) {
+        return <NoResults
+        />;
     }
     if (isError) return <Error/>
 

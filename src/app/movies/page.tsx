@@ -13,6 +13,7 @@ import {Movies} from "@/common/Movies/page";
 import {Loading} from "@/common/Loading/page";
 import {Error} from "@/common/Error/page";
 import {SearchResults} from "@/common/SearchResults/page";
+import {NoResults} from "@/common/NoResults/page";
 
 export default function MovieList() {
 
@@ -43,6 +44,10 @@ export default function MovieList() {
     if (isPending) {
         return <Loading
             searchQuery={query}/>
+    }
+    if (!isPending && !rawData?.results?.length) {
+        return <NoResults
+        />;
     }
     if (isError) {
         return <Error/>
